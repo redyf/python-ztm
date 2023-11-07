@@ -11,11 +11,13 @@ class PlayerCharacter:
     def shout(self):
         print(f"my name is {self.name}")
 
-    def run(self, hello):
-        print(f"my name is {self.name}")
+    # Não precisamos instanciar uma classe para poder usar o class method. Raramente usado mas é bom saber.
+    @classmethod
+    def adding_things(cls, num1, num2):
+        return cls("Teddy", num1 + num2)
 
 
 player1 = PlayerCharacter("Cindy", 24)
 player2 = PlayerCharacter("Tom", 21)
-
-print(player1.shout())
+player3 = PlayerCharacter.adding_things(2, 3)
+print(player3.age)
