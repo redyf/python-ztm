@@ -1,4 +1,7 @@
-class User:
+class User(object):
+    def __init__(self, email):
+        self.email = email
+
     def sign_in(self):
         print("Logged in")
 
@@ -22,6 +25,15 @@ class Archer(User):
     def attack(self):
         print(f"Attacking with arrows: arrows left - {self.num_arrows}")
 
+    def run(self):
+        print("ran really fast")
+
+
+class HybridBorg(Wizard, Archer):
+    def __init__(self, name, power, arrows) -> None:
+        Archer.__init__(self, name, arrows)
+        Wizard.__init__(self, name, power)
+
 
 class Healer(User):
     def __init__(self, name, mana) -> None:
@@ -29,7 +41,9 @@ class Healer(User):
         self.mana = mana
 
 
-wizard1 = Wizard("Merlin", 50)
-archer1 = Archer("Robin", 100)
-wizard1.attack()
-archer1.attack()
+hb1 = HybridBorg("borgie", 50, 100)
+print(hb1.attack())
+print(hb1.run())
+# wizard1 = Wizard("Merlin", 50, "merlin@gmail.com")
+# print(dir(wizard1))  # introspection
+# archer1 = Archer("Robin", 100)
